@@ -1,10 +1,7 @@
 package com.example.internproject.domain.user.entity;
 
 import com.example.internproject.domain.user.enums.UserRole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,12 +18,15 @@ public class User {
     private String password;
     private String nickname;
 
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+
     @Builder
-    public User(Long id, String username, String password, String nickname, UserRole role) {
-        this.id = id;
+    public User(String username, String password, String nickname) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
+        this.role = UserRole.USER;
     }
 
 }

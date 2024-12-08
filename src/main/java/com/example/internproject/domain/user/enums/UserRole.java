@@ -9,8 +9,8 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public enum UserRole {
 
-    USER(Authority.USER),
-    MASTER(Authority.MASTER);
+    USER(authorityName.USER),
+    MASTER(authorityName.MASTER);
 
     private final String userRole;
 
@@ -21,7 +21,7 @@ public enum UserRole {
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 입력값입니다."));
     }
 
-    public static class Authority {
+    public static class authorityName {
         public static final String USER = "ROLE_USER";
         public static final String MASTER = "ROLE_MASTER";
     }
