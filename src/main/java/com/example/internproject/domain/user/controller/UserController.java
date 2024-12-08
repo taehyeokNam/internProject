@@ -1,7 +1,9 @@
 package com.example.internproject.domain.user.controller;
 
-import com.example.internproject.domain.user.dto.AuthSignupRequest;
-import com.example.internproject.domain.user.dto.AuthSignupResponse;
+import com.example.internproject.domain.user.dto.request.AuthSigninRequest;
+import com.example.internproject.domain.user.dto.request.AuthSignupRequest;
+import com.example.internproject.domain.user.dto.response.AuthSigninResponse;
+import com.example.internproject.domain.user.dto.response.AuthSignupResponse;
 import com.example.internproject.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,4 +22,11 @@ public class UserController {
     public ResponseEntity<AuthSignupResponse> signup(@RequestBody AuthSignupRequest request) {
         return ResponseEntity.ok(userService.signup(request));
     }
+
+    // 로그인
+    @PostMapping("/auth/signin")
+    public ResponseEntity<AuthSigninResponse> signin(@RequestBody AuthSigninRequest request) {
+        return ResponseEntity.ok(userService.signin(request));
+    }
+
 }

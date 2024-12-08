@@ -1,7 +1,6 @@
-package com.example.internproject.domain.user.dto;
+package com.example.internproject.domain.user.dto.response;
 
 import com.example.internproject.domain.user.enums.UserRole;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
