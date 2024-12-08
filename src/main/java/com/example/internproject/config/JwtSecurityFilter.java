@@ -40,7 +40,7 @@ public class JwtSecurityFilter extends OncePerRequestFilter {
             String jwt = jwtUtil.substringToken(authorizationHeader);
             try {
                 Claims claims = jwtUtil.extractClaims(jwt);
-                Long userId = Long.valueOf(claims.getSubject());
+                //Long userId = Long.valueOf(claims.getSubject());
                 String userRoleString = claims.get("userRole", String.class);
                 if (userRoleString == null) {
                     log.error("JWT에서 userRole을 찾을 수 없습니다.");
@@ -53,7 +53,7 @@ public class JwtSecurityFilter extends OncePerRequestFilter {
                 if (SecurityContextHolder.getContext().getAuthentication() == null) {
                     String userName = claims.get("username", String.class);
                     String nickname = claims.get("nickname", String.class);
-                    AuthUser authUser = new AuthUser(userId, userName, nickname, userRole);
+                    AuthUser authUser = new AuthUser(userName, nickname, userRole);
 
                     JwtAuthenticationToken authenticationToken = new JwtAuthenticationToken(authUser);
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));

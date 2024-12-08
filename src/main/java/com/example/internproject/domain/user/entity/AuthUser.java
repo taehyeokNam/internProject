@@ -11,13 +11,13 @@ import java.util.List;
 @Getter
 public class AuthUser {
 
-    private final Long userId;
+    //private final Long userId;
     private final String username;
     private final String email;
     private final Collection<? extends GrantedAuthority> authorities;
 
-    public AuthUser(Long userId, String username, String nickname, UserRole role) {
-        this.userId = userId;
+    public AuthUser(String username, String nickname, UserRole role) {
+        //this.userId = userId;
         this.username = username;
         this.email = nickname;
         this.authorities = List.of(new SimpleGrantedAuthority(role.getUserRole()));

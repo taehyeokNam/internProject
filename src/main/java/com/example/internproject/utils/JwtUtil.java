@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import java.util.NoSuchElementException;
 
 @Slf4j(topic = "JwtUtil")
 @Component
+@Setter
 public class JwtUtil {
 
     private static final String BEARER_PREFIX = "Bearer ";
@@ -36,7 +38,7 @@ public class JwtUtil {
 
     public String createToken(Long userId, String username, String nickname, UserRole userRole) {
         Date date = new Date();
-
+        Claims claims = Jwts.claims().setSubject(username);
         return BEARER_PREFIX +
                 Jwts.builder()
                         .setSubject(String.valueOf(userId))
