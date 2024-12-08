@@ -1,9 +1,11 @@
 package com.example.internproject.domain.user.entity;
 
+import com.example.internproject.domain.user.enums.UserRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +21,8 @@ public class User {
     private String password;
     private String nickname;
 
-    public User(Long id, String username, String password, String nickname) {
+    @Builder
+    public User(Long id, String username, String password, String nickname, UserRole role) {
         this.id = id;
         this.username = username;
         this.password = password;
